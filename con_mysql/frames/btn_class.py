@@ -13,10 +13,10 @@ class BtnIngre():
     def get_name(self):
         return self.__name
 
-    def put_there(self, ko):
-        ko.set(ko.get()[: -1] + " " + self.get_name() + ";")
+    def put_there(self, ko, id_pizza):
+        ko.set(ko.get()[: -1] + " (" + str(self.get_id()) + ", " + str(id_pizza.get()) + "),;")
 
-    def create_btn(self, relative_frame, ind, ind2, the_string):
-        x = Button(relative_frame, text=self.get_name(), state=NORMAL, width=15, command=lambda: [self.put_there(the_string), x.config(state=DISABLED)])
+    def create_btn(self, relative_frame, ind, ind2, the_string, id_pizza):
+        x = Button(relative_frame, text=self.get_name(), state=NORMAL, width=15, command=lambda: [self.put_there(the_string, id_pizza), x.config(state=DISABLED)])
         x.grid(row=ind, column=ind2, padx=(0, 7), pady=(3, 3))
         return x
